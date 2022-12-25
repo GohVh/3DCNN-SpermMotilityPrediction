@@ -81,3 +81,8 @@ For fold 1, a test sample is prepared in the format of .npy
 ```bash
 %run test.py --fold 1 --isSingleTest --singlePath 'your_path_here.npy'
 ```
+## Result
+The results shown below are predicted using model trained from Dataset Type C, Fold 1.
+<div align="center"> 
+  <img src="" alt="screenshot" />
+</div>
