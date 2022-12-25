@@ -101,6 +101,6 @@ The results shown below are predicted using model trained from Dataset Type C, F
 
 The dataset used in this project is an open-source Multimodal Video Dataset of Human Spermatozoa. It is a multi-modal dataset containing different data sources such as videos, biological analysis data, and participant data. It consists of anonymized data from 85 different participants, of which the samples collection and analysis approach were performed according to WHO recommendation. This dataset is prepared by a team of members from Simula Research Laboratory and SimulaMet.
 
-[Dataset](https://datasets.simula.no/visem/)
+[Simula Dataset](https://datasets.simula.no/visem/)
 
-[Official Github Repo](https://github.com/simula/datasets.simula.no)
+[Simula Official Github Repo](https://github.com/simula/datasets.simula.no)
