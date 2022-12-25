@@ -29,7 +29,7 @@ drive.mount('/content/gdrive')
 !pip install wandb -qqq
 ```
 ### Train
-```bash
+```console
 %run main.py --fold 1
 Compulsory argument:
     [--fold]    :   number of fold for training and validation
@@ -46,7 +46,7 @@ For fold 1, continue training from previous checkpoint, which stopped at epoch 5
 %run main.py --fold 1 --isContinue --epoch 20
 ```
 ### Test
-```bash
+```console
 %run test.py --fold 1 --isTestSet --testPath 'your_path_here'
 Compulsory argument:
     [--fold]    :   number of fold for training and validation
