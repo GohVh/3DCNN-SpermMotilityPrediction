@@ -1,6 +1,8 @@
 <!-- readme -->
 # 3D Convolutional Neural Networks for Sperm Motility Prediction
 **This is the official implementation of 3D Convolutional Neural Networks for Sperm Motility Prediction, using stacked dense optical flow frames as input.**
+This work is presented in 2nd International Conference on Intelligent Cybernetics Technology & Applications 2022 (ICICyTA), the published paper will be uploaded later.
+[Paper Link](https://github.com/GohVh/3DCNN-SpermMotilityPrediction)
 
 ## Prepare & Preprocess Dataset
 Refer to the prepare_dataset notebook
@@ -86,3 +88,14 @@ The results shown below are predicted using model trained from Dataset Type C, F
 <div align="center"> 
   <img src="https://github.com/GohVh/3DCNN-SpermMotilityPrediction/blob/main/result.JPG" alt="screenshot" />
 </div>
+
+### :handshake: Contact
+- LinkedIn Profile: [GohVh](https://www.linkedin.com/in/gohvh95/)
+- Email: gohvh95@gmail.com
+
+### :gem: Acknowledgements
+
+The dataset used in this project is an open-source Multimodal Video Dataset of Human Spermatozoa. It is a multi-modal dataset containing different data sources such as videos, biological analysis data, and participant data. It consists of anonymized data from 85 different participants, of which the samples collection and analysis approach were performed according to WHO recommendation. This dataset is prepared by a team of members from Simula Research Laboratory and SimulaMet.
+
+[Dataset](https://datasets.simula.no/visem/)
+[Official Github Repo](https://github.com/simula/datasets.simula.no)
