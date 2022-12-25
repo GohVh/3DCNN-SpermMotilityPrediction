@@ -1,5 +1,4 @@
 import torch.nn as nn
-from utils import *
 
 class CNN3DModel(nn.Module):
 	def __init__(self):

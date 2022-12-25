@@ -1,8 +1,9 @@
 PATH:
-  MODEL_DIR: '/content/gdrive/MyDrive/share/cnn3d/'
+  MODEL_DIR: 'your_path_here'
 
 PARAM:
   BATCH_SIZE: 30
   STEP_SIZE: 10
   GAMMA: 0.95
+  
   INITIAL_LR: 1.0e-6

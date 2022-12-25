@@ -2,7 +2,6 @@ import torch.nn as nn
 from utils import *
 import torch
 from time import sleep
-from tqdm import tqdm
 from torch.autograd import Variable
 from torch.optim import *
 from tqdm.notebook import tqdm

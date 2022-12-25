@@ -13,11 +13,22 @@ conda env create -f env.yml
 ```
 
 ## Using Google Colab
+### Load dataset
 Copy the dataset saved in Google Drive to Colab (Samples loading during training is slower if load directly from Drive)
 1. Mount your drive
 2. Copy the folder containing dataset to Colab
+3. Install wandb (create an account first)
 ```bash
 from google.colab import drive
 drive.mount('/content/gdrive')
+```
+```bash
 %cp -av 'your_drive_folder_here' 'your_destination_here'
+```
+```bash
+!pip install wandb -qqq
+```
+### Train
+```bash
+!pip install wandb -qqq
 ```

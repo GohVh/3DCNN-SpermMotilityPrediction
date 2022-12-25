@@ -1,10 +1,9 @@
 # importing the libraries
-from statistics import mean
 import pandas as pd
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
-from train import *
+from train import train
 
 import wandb
 import argparse
@@ -12,7 +11,7 @@ wandb.login()
 
 from utils import *
 from CustomDataset import CustomImageDataset
-from model import *
+from model import CNN3DModel
 
 parser = argparse.ArgumentParser()
 config = load_train_config('./config.yml')
@@ -58,11 +57,10 @@ def main():
 
 	# generate log
 	log_df = pd.DataFrame({'mot_trainacc': [], 'mot_valacc': [], 'mot_trainloss': [], 'mot_valloss': []})
-	print(f'log_df: {log_df}')
 
 	# check if its start from previous trained checkpoint
 	if args.isContinue:
-		model, optimizer, min_valacc = load_checkpoint(best_model_path, checkpoint_path, model, optimizer, isBest=False)
+		model, optimizer, min_valacc = load_checkpoint(best_model_path, checkpoint_path, model, optimizer, isBest=False, isPrint=True)
 	
 	log_df = train(args.fold, model, device, train_loader, test_loader, args.epoch, totaltrainsamples, totaltestsamples, PARAM["BATCH_SIZE"], optimizer, lr_scheduler, min_valacc, checkpoint_path, best_model_path, log_df, PATH["MODEL_DIR"])
 

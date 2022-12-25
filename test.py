@@ -5,21 +5,22 @@ import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
-from train import *
-from test import *
+from torch.autograd import Variable
 import wandb
 import argparse
 wandb.login()
-from utils import *
 from CustomDataset import CustomImageDataset
-from model import *
+from model import CNN3DModel
+from tqdm.notebook import tqdm
+from time import sleep
 
-def predict(model, test_target):
+def predict(model, device, test_target):
     with torch.no_grad():
         model.eval()
-        predmot = model(test_target)
-        predmot = (predmot.cpu().numpy())*100
-        result={f'Progressive: {predmot[0]}%, Non-progressive: {predmot[1]}%, Immotile: {predmot[2]}%'}
+        x = Variable(test_target).to(device)
+        predmot = model(x)
+        predmot = (predmot.cpu().numpy()[0])*100
+        result= f'Progressive: {predmot[0]:.3f}%, Non-progressive: {predmot[1]:.3f}%, Immotile: {predmot[2]:.3f}%'
     
     return result
 
@@ -86,14 +87,16 @@ def main():
     best_model_path = f'{PATH["MODEL_DIR"]}/f{args.fold}_bestmodel.pth'
 
     # load model with best validation accuracy
-    model, optimizer, min_valacc = load_checkpoint(best_model_path, checkpoint_path, model, optimizer, isBest=True)
+    model, optimizer, min_valacc = load_checkpoint(best_model_path, checkpoint_path, model, optimizer, isBest=True, isPrint=False)
 
     result=None
     
     if args.isSingleTest:
         assert args.singlePath!=None, 'directory of the tested file cannot be None, please specified as "--singlePath your_path_here"'
-        testfile = np.load(args.singlePath)
-        result = predict(model, testfile)
+        # testfile = np.load(args.singlePath)
+        testfile = np.array([np.load(args.singlePath)])
+        testfile = torch.from_numpy(testfile).float()
+        result = predict(model, device, testfile)
         print(result)
 
     if args.isTestSet:

@@ -14,17 +14,18 @@ def save_checkpoint(state, checkpoint_path, isBest=False, best_model_path=None):
 		assert best_model_path==None, 'best_model_path cannot be None'
 		shutil.copyfile(checkpoint_path, best_model_path)
 
-def load_checkpoint(best_model_path, checkpoint_path, model, optimizer, isBest=False):
+def load_checkpoint(best_model_path, checkpoint_path, model, optimizer, isBest=False, isPrint=False):
 	train_acc_key = 'mot min train acc'
 	val_acc_key = 'mot min val acc'
 
 	model, optimizer, epoch, trainacc, valacc, min_valacc = load_model(best_model_path, checkpoint_path, model, optimizer, train_acc_key, val_acc_key, isBest)
 
-	print("optimizer = ", optimizer)
-	print("start_epoch = ", epoch)
-	print(f'train acc = {trainacc}')
-	print(f'val acc = {valacc}')
-	print(f'min val acc = {min_valacc}')
+	if isPrint:
+		print("optimizer = ", optimizer)
+		print("start_epoch = ", epoch)
+		print(f'train acc = {trainacc}')
+		print(f'val acc = {valacc}')
+		print(f'min val acc = {min_valacc}')
 
 	return model, optimizer, min_valacc
 
