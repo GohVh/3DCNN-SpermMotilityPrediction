@@ -29,16 +29,22 @@ drive.mount('/content/gdrive')
 !pip install wandb -qqq
 ```
 ### Train
-```console
+```bash
 %run main.py --fold 1
+```
+```console
 Compulsory argument:
-    [--fold]    :   number of fold for training and validation
-                    type int
+    [--fold]
+    number of fold for training and validation
+    type int
 
 Optional arguments:
-    [--epoch]   :   Number of epochs for training, default=50
-                    type int
-    [--isContinue]: If you wish to train from previous stopped checkpoint
+    [--epoch]
+    Number of epochs for training, default=50
+    type int
+
+    [--isContinue]
+    If you wish to train from previous stopped checkpoint
 ```
 Example: 
 For fold 1, continue training from previous checkpoint, which stopped at epoch 50, continue for another 20 epochs.
@@ -46,16 +52,32 @@ For fold 1, continue training from previous checkpoint, which stopped at epoch 5
 %run main.py --fold 1 --isContinue --epoch 20
 ```
 ### Test
-```console
+```bash
 %run test.py --fold 1 --isTestSet --testPath 'your_path_here'
-Compulsory argument:
-    [--fold]    :   number of fold for training and validation
-                    type int
-    [--isTestSet] or [--isSingleTest]:  type of test samples. If test sample is more than one, please prepare a csv file with headings same as the directory csv file used for training/validation, examples in the folder "dir"
-
-Optional arguments:
-    [--epoch]   :   Number of epochs for training, default=50
-                    type int
-    [--isContinue]: If you wish to train from previous stopped checkpoint
 ```
+```console
+Compulsory argument:
+    [--fold]
+    number of fold for training and validation
+    type int
+
+    [--isTestSet] or [--isSingleTest]
+    Type of test samples. 
+    If test sample is more than one, use --isTestSet.
+    Please prepare a csv file with headings same as the directory csv file used for training/validation.
+    Examples in the folder "dir".
+    If test sample is only one, use --isSingleTest
+
+    [--testPath] or [--singlePath]
+    File type for --testPath = .csv
+    File type for --singlePath = .npy
+```
+Example:
+For fold 1, a test set is prepared with directories as specified.
+```bash
+%run test.py --fold 1 --isTestSet --testPath 'your_path_here.csv'
+```
+For fold 1, a test sample is prepared in the format of .npy
+```bash
+%run test.py --fold 1 --isSingleTest --singlePath 'your_path_here.npy'
 ```
