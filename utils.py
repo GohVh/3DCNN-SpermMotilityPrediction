@@ -1,7 +1,7 @@
 import torch
 import shutil
 import yaml
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 def load_train_config(path):
     with open(path) as f:
@@ -57,15 +57,15 @@ def save_checkpoint(state, current_checkpoint_path, is_best=False, best_model_pa
         shutil.copyfile(current_checkpoint_path, best_model_path)
 
 def plot(history, graphType, isTest=False):
-    if not isTest:
-        plt.plot(history[f'mot_train{graphType}'], label='train', marker= '*')
-        plt.plot(history[f'mot_val{graphType}'], label='val', marker = 'o')
-    else:
-        plt.plot(history[f'mot_test{graphType}'], label='test', marker= '*')
-    plt.title(f'{graphType} per epoch')
-    plt.ylabel(f'{graphType}')
-    plt.xlabel('epoch')
-    plt.legend(), plt.grid()
-    plt.show()
+	if not isTest:
+		plt.plot(history[f'mot_train{graphType}'], label='train', marker= '*')
+		plt.plot(history[f'mot_val{graphType}'], label='val', marker = 'o')
+	else:
+		plt.plot(history[f'mot_test{graphType}'], label='test', marker= '*')
+	plt.title(f'{graphType} per epoch')
+	plt.ylabel(f'{graphType}')
+	plt.xlabel('epoch')
+	plt.legend(), plt.grid()
+	plt.show()
 
 

@@ -7,8 +7,9 @@ from torch.autograd import Variable
 from torch.optim import *
 from tqdm.notebook import tqdm
 import wandb
+from datetime import datetime
 
-def train(fold, model, device, train_loader, test_loader, num_epochs, totaltrainsamples, totaltestsamples, batch_size, optimizer, lr_scheduler, mot_min_valacc, checkpoint_path, best_model_path, log_df):
+def train(fold, model, device, train_loader, test_loader, num_epochs, totaltrainsamples, totaltestsamples, batch_size, optimizer, lr_scheduler, mot_min_valacc, checkpoint_path, best_model_path, log_df, logpath):
     
     loss = nn.MSELoss()
     acc = nn.L1Loss()
@@ -94,8 +95,13 @@ def train(fold, model, device, train_loader, test_loader, num_epochs, totaltrain
             # save checkpoint as best model
             save_checkpoint(checkpoint, checkpoint_path, True, best_model_path)
             mot_min_valacc = MotValMAE
-            
-        log_df.astype('float32').to_csv(f'/content/gdrive/MyDrive/share/f{fold}_log.csv')
-    
+
+    now = datetime.now()
+    dt_str = now.strftime("%d%m%Y_%H%M")
+    log_df.astype('float32').to_csv(f'{logpath}/f{fold}_log_e{epoch}_{dt_str}.csv')
     print('Finished training')
+    
+    return log_df
+    
+    
 
