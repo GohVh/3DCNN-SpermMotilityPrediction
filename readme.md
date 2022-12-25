@@ -84,5 +84,5 @@ For fold 1, a test sample is prepared in the format of .npy
 ## Result
 The results shown below are predicted using model trained from Dataset Type C, Fold 1.
 <div align="center"> 
-  <img src="" alt="screenshot" />
+  <img src="https://github.com/GohVh/3DCNN-SpermMotilityPrediction/blob/main/result.JPG" alt="screenshot" />
 </div>
