@@ -11,7 +11,7 @@ def load_train_config(path):
 def save_checkpoint(state, checkpoint_path, isBest=False, best_model_path=None):
 	torch.save(state, checkpoint_path)
 	if isBest:
-		assert best_model_path==None, 'best_model_path cannot be None'
+		assert best_model_path!=None, 'best_model_path cannot be None'
 		shutil.copyfile(checkpoint_path, best_model_path)
 
 def load_checkpoint(best_model_path, checkpoint_path, model, optimizer, isBest=False, isPrint=False):
@@ -50,12 +50,6 @@ def load_model(best_model_path, checkpoint_path, model, optimizer, train_acc_key
 		valacc = current_ckp[val_acc_key]	
 
 	return model, optimizer, epoch, trainacc, valacc, min_valacc
-
-def save_checkpoint(state, current_checkpoint_path, is_best=False, best_model_path=None):
-    torch.save(state, current_checkpoint_path)
-    if is_best:
-        assert best_model_path!=None, 'best_model_path should not be None.'
-        shutil.copyfile(current_checkpoint_path, best_model_path)
 
 def plot(history, graphType, isTest=False):
 	if not isTest:
