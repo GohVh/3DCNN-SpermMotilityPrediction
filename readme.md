@@ -2,9 +2,7 @@
 # 3D Convolutional Neural Networks for Sperm Motility Prediction
 **This is the official implementation of 3D Convolutional Neural Networks for Sperm Motility Prediction, using stacked dense optical flow frames as input.**
 
-This work is presented in 2nd International Conference on Intelligent Cybernetics Technology & Applications 2022 (ICICyTA) and published in IEEE Xplore.
-<!-- <a href="https://ieeexplore.ieee.org/abstract/document/10037950" target="_blank">Link</a> -->
-[Link]([http://stackoverflow.com](https://ieeexplore.ieee.org/abstract/document/10037950)){:target="_blank" rel="noopener"}
+This work is presented in 2nd International Conference on Intelligent Cybernetics Technology & Applications 2022 (ICICyTA) and published in IEEE Xplore. [Link](https://ieeexplore.ieee.org/abstract/document/10037950)
 
 ## Prepare & Preprocess Dataset
 Refer to the prepare_dataset notebook
